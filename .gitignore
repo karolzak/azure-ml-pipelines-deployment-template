@@ -2,7 +2,6 @@
 __pycache__/
 *.py[cod]
 *$py.class
-.vscode
 
 # C extensions
 *.so
@@ -103,3 +102,13 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# vscode config
+.vscode
+
+# src folder limited to .py only
+src/*
+!src/*.py
+
+#
+*.csv
