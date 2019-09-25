@@ -30,7 +30,7 @@ def run_train(input_path, output_path):
 
     # read data from CSV file
     df = pd.read_csv(input_path)
-    X = df.as_matrix(columns=feat_cols)
+    X = df[feat_cols].values
     y = df[label_col].values    
 
     # model tunning
