@@ -3,6 +3,7 @@ from azureml.core import Workspace, Dataset, Experiment, Run
 from azureml.core.model import Model
 # local imports
 from score import run_score
+import config as cfg
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -12,11 +13,10 @@ if __name__ == "__main__":
 
     run = Run.get_context()
 
-    model_name = 'diabetes_model'
     if 'offline' in run.id.lower():
         model_path = 'models\model_alpha_best.pkl'
     else:
-        model_path = Model.get_model_path(model_name=model_name)
+        model_path = Model.get_model_path(model_name=cfg.model_name)
 
     results_path = run_score(args.input_path, args.output_path, model_path, run.id)
     run.upload_file(name='score_results.csv', path_or_stream=results_path)
